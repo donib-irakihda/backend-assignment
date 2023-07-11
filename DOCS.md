@@ -25,7 +25,8 @@ Before running the project, make sure you have the following installed on your m
 6. Run the seed: `npm run seed`
 7. Start the server: `npm run dev`
 8. The server will be running on `http://localhost:3000`.
-9. Run `node swagger.js` to get the `swagger-output.json` file. Import this file in Postman to get all the APIS setup.
+9. Run `node swagger.js` to get the `swagger-output.json` file.
+10. Go to browser and hit this url: `http://localhost:3000/api-docs/` and you will see all the APIs of this project.
 
 ## API Endpoints
 
