@@ -23,8 +23,9 @@ const getTotalSales = async (req, res) => {
 const getTotalSalesByDay = async (req, res) => {
   try {
     const { date } = req.query;
-    const startDate = new Date(date);
-    const endDate = new Date(date);
+    const currentDate = date ? new Date(date) : new Date(); // Use current date if date is not provided
+    const startDate = new Date(currentDate);
+    const endDate = new Date(currentDate);
     endDate.setDate(endDate.getDate() + 1);
 
     const totalSales = await prisma.order.aggregate({
@@ -55,8 +56,9 @@ const getTotalSalesByDay = async (req, res) => {
 const getTotalSalesByWeek = async (req, res) => {
   try {
     const { date } = req.query;
+    const currentDate = date ? new Date(date) : new Date(); // Use current date if date is not provided
 
-    const startDate = new Date(date);
+    const startDate = new Date(currentDate);
     startDate.setDate(startDate.getDate() - startDate.getDay());
     const endDate = new Date(startDate);
     endDate.setDate(endDate.getDate() + 7);
@@ -87,9 +89,9 @@ const getTotalSalesByWeek = async (req, res) => {
 const getTotalSalesByMonth = async (req, res) => {
   try {
     const { date } = req.query;
-
+    const currentDate = date ? new Date(date) : new Date(); // Use current date if date is not provided
     // Set the start date to the first day of the specified month
-    const startDate = new Date(date);
+    const startDate = new Date(currentDate);
     startDate.setDate(1);
 
     // Set the end date to the last day of the specified month
